@@ -7,9 +7,9 @@ function calculaMedia(){
     var media = (((notaPrimeiroBimestre + notaSegundoBimestre + notaTerceiroBimestre + notaQuartoBimestre) / 4).toFixed(1))
     
     if (media <= 5 ){
-      var status = "Reprovado"
+      var status = "REPROVADO"
     } else {
-      var status = "Aprovado"
+      var status = "APROVADO"
     }
     
     document.getElementById("resultado").innerHTML = "<label id='resultado'>Sua média foi = " + media + " você foi " + status + "</label>"

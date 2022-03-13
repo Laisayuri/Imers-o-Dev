@@ -1,26 +1,31 @@
 body {
     font-family: 'Lucida Console', monospace;
     text-align: center;
-    background-image: url('https://img.freepik.com/fotos-gratis/menina-com-fones-de-ouvido_23-2147982482.jpg?w=1380');
+    background-image: url('menina.jpeg');
     background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-  }
+}
   
   .container {
     text-align: center;
-    padding: 20px;
-    height: 100vh;
+    padding: 50px;
+    height: 40vh;
   }
-  
+
+  .container2 {
+    color: white;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: top;
+  }
+
   .page-title {
-    color:#ffffff;
+    color: black;
     margin: 0 0 5px;
   }
   
   .page-subtitle {
     color:#ffffff;
-    margin-top: 5px;
+    margin-top: 20px;
   }
   
   .page-logo {
@@ -30,6 +35,6 @@ body {
   .alura-logo {
     width: 40px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 40px;
+    right: 40px;
   }
