@@ -1,10 +1,11 @@
 var filme = document.getElementById("filmeAdicionado");
 var listaFilmes = [
-    "https://vortexcultural.com.br/images/2021/12/um-homem-de-familia.jpg",
-    "https://vortexcultural.com.br/images/2021/12/homem-aranha-3.jpg",
-    "https://vortexcultural.com.br/images/2022/01/nobody_xlg.jpg",
-    "https://vortexcultural.com.br/images/2021/12/Turma-da-Monica-Licoes.jpg", 
-    "https://04ArrayListaFlix/101Dalmatas.jpeg"
+  "https://vortexcultural.com.br/images/2021/12/um-homem-de-familia.jpg",
+  "https://vortexcultural.com.br/images/2021/12/homem-aranha-3.jpg",
+  "https://vortexcultural.com.br/images/2022/01/nobody_xlg.jpg",
+  "https://vortexcultural.com.br/images/2021/12/Turma-da-Monica-Licoes.jpg", 
+  "https://vortexcultural.com.br/images/2021/05/101-Dalmatas-1996.jpg",
+];
 
 // http://www.grupoestacao.com.br/site/images/posters/acincopassosdevc.jpg //
 
