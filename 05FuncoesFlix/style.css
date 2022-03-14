@@ -1,0 +1,73 @@
+body {
+    font-family: "Roboto Mono", monospace;
+    text-align: center;
+    background-image: url("https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3149783:1634680078/Eternos.jpg?f=default&$p$f=f680bbd");
+    background-color: #000000;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    color: #ffffff;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .page-title {
+    color: #ffffff;
+    margin: 0 0 10px;
+  }
+  
+  .page-subtitle {
+    color: #ffffff;
+    margin-top: 10px;
+  }
+  
+  .page-logo {
+    width: 200px;
+  }
+  
+  .alura-logo {
+    width: 40px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  
+  #listaFilmes img {
+    margin: 10px;
+    max-height: 250px;
+  }
+  
+  .formatFilmes {
+    display: inline-block;
+  }
+  
+  .form {
+    margin: 0 0 15px;
+  }
+  
+  .form input {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 15px;
+  }
+  
+  .form button {
+    border: 0;
+    color: #ffffff;
+    background: #da1e26;
+    font-weight: bold;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .form button:hover {
+    opacity: 0.8;
+  }
+  
