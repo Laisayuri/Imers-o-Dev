@@ -1,112 +1,93 @@
-var pessoas = [
-    {
-      nome: "Simpons",
-      imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXnxrVHXgie5Xk4QlNqCxUIStehQRWB9SsUw&usqp=CAU",
-      vitorias: 0,
-      derrotas: 0,
-      empates: 0,
-      pontos: 0
-    },
-    {
-      nome: "Sonic",
-      imagem:
-        "http://images.eurogamer.net/2013/articles//a/1/5/8/1/1/0/0/eurogamer-38ftlr.jpg/EG11/resize/600x-1/quality/91",
-      vitorias: 0,
-      derrotas: 0,
-      empates: 0,
-      pontos: 0
-    },
-    {
-      nome: "Shrek",
-      imagem:
-        "https://observatoriodocinema.uol.com.br/wp-content/uploads/2021/12/1621553338681.webp",
-      vitorias: 0,
-      derrotas: 0,
-      empates: 0,
-      pontos: 0
+//         chave.  valor.
+var rafa = { nome: "Rafa", foto: "https://cf.shopee.com.br/file/a64e8c6b67fbdf1cbe94ff1aa3643a3e", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
+var paulo = { nome: "Paulo", foto: "https://media-exp1.licdn.com/dms/image/C4D03AQHNUGchMAa-Yw/profile-displayphoto-shrink_200_200/0/1556583729599?e=1648080000&v=beta&t=JlJikK8x2gehkNC55nNOYWjrzsfAtj0e8A2FyZOT4eY", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
+var gui = { nome: "Gui", foto: "https://www.alura.com.br/assets/img/imersoes/instrutores/guilherme_lima.1636535198.jpg", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
+var jogadorNovo = { nome: "", foto: "", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
+
+var jogadores = [rafa, paulo, gui];
+
+function adicionarJogador() {
+  var nomeJogador = document.getElementById("nomeJogador").value;
+  document.getElementById("nomeJogador").value = "";
+  var fotoJogador = document.getElementById("fotoJogador").value;
+  document.getElementById("fotoJogador").value = "";
+  
+  jogadorNovo.nome = nomeJogador
+  jogadorNovo.foto = fotoJogador
+  jogadores.push(jogadorNovo)
+  exibeJogadoresNaTela(jogadores)
+}
+
+function calculaPontos(jogador) {
+  var pontos = jogador.vitorias * 3 + jogador.empates;
+  return pontos;
+}
+
+rafa.pontos = calculaPontos(rafa);
+paulo.pontos = calculaPontos(paulo);
+gui.pontos = calculaPontos(gui);
+
+function exibeJogadoresNaTela(jogadores) {
+  var elemento = "";
+  for (var i = 0; i < jogadores.length; i++) {
+    elemento += "<tr><td>" + jogadores[i].nome + "</td>";
+    elemento += "<td><img src=" + jogadores[i].foto + "></td>";
+    elemento += "<td>" + jogadores[i].vitorias + "</td>";
+    elemento += "<td>" + jogadores[i].empates + "</td>";
+    elemento += "<td>" + jogadores[i].derrotas + "</td>";
+    elemento += "<td>" + jogadores[i].pontos + "</td>";
+    elemento +=
+      "<td><button onClick='adicionarVitoria(" + i + ")'>Vitória</button></td>";
+    elemento +=
+      "<td><button onClick='adicionarEmpate(" + i + ")'>Empate</button></td>";
+    elemento +=
+      "<td><button onClick='adicionarDerrota(" + i + ")'>Derrota</button></td>";
+    elemento += "</tr>";
+  }
+
+  var tabelaJogadores = document.getElementById("tabelaJogadores");
+  tabelaJogadores.innerHTML = elemento;
+}
+exibeJogadoresNaTela(jogadores);
+
+function adicionarVitoria(i) {
+  var jogador = jogadores[i];
+  jogador.vitorias++;
+  jogador.pontos = calculaPontos(jogador);
+  for (var contador = 0; contador < jogadores.length; contador++) {
+    if (contador != i) {
+      var outrosJogadores = jogadores[contador];
+      outrosJogadores.derrotas++;
     }
-  ];
-  
-  function novoJogador() {
-    var novoJogador = document.getElementById("novoJogador").value;
-    var imagemJogador = document.getElementById("imagemJogador").value;
-    pessoas.push({
-      nome: novoJogador,
-      imagem: imagemJogador,
-      vitorias: 0,
-      derrotas: 0,
-      empates: 0,
-      pontos: 0
-    });
-    exibeJogadoresNaTela(pessoas);
-    document.getElementById("novoJogador").value = "";
-    document.getElementById("imagemJogador").value = "";
   }
-  
-  function zerarPontos() {
-    for (i = 0; i < pessoas.length; i++) {
-      pessoas[i].vitorias = 0;
-      pessoas[i].derrotas = 0;
-      pessoas[i].empates = 0;
-      pessoas[i].pontos = 0;
-    }
-    exibeJogadoresNaTela(pessoas);
+  exibeJogadoresNaTela(jogadores);
+}
+
+function adicionarEmpate() {
+  for (
+    var segundoIndice = 0;
+    segundoIndice < jogadores.length;
+    segundoIndice++
+  ) {
+    var jogador = jogadores[segundoIndice];
+    jogador.empates++;
+    jogador.pontos = calculaPontos(jogador);
   }
-  
-  exibeJogadoresNaTela(pessoas);
-  
-  function calculaPontos(jogador) {
-    var pontos = jogador.vitorias * 3 + jogador.empates;
-    jogador.pontos = pontos;
+  exibeJogadoresNaTela(jogadores);
+}
+
+function adicionarDerrota(i) {
+  var jogador = jogadores[i];
+  jogador.derrotas++;
+  exibeJogadoresNaTela(jogadores);
+}
+
+function resetarJogo() {
+  for (var i = 0; i < jogadores.length; i++) {
+    jogadores[i].vitorias = 0;
+    jogadores[i].derrotas = 0;
+    jogadores[i].empates = 0;
+    jogadores[i].pontos = 0;
   }
-  
-  function exibeJogadoresNaTela(pessoas) {
-    var elemento = "";
-    for (i = 0; i < pessoas.length; i++) {
-      elemento += "<tr><td><img src=" + pessoas[i].imagem + "></td>";
-      elemento += "<td>" + pessoas[i].nome + "</td>";
-      elemento += "<td>" + pessoas[i].vitorias + "</td>";
-      elemento += "<td>" + pessoas[i].empates + "</td>";
-      elemento += "<td>" + pessoas[i].derrotas + "</td>";
-      elemento += "<td>" + pessoas[i].pontos + "</td>";
-      elemento +=
-        "<td><button onClick='adicionarVitoria(" + i + ")'>Vitória</button></td>";
-      elemento += "<td><button onClick='adicionarEmpate()'>Empate</button></td>";
-      elemento +=
-        "<td><button onClick='adicionarDerrota(" +
-        i +
-        ")'>Derrota</button></td></tr>";
-    }
-    document.querySelector("#tabelaJogadores").innerHTML = elemento;
-  }
-  
-  function adicionarVitoria(i) {
-    pessoas[i].vitorias++;
-    calculaPontos(pessoas[i]);
-    for (y = 0; y < pessoas.length; y++) {
-      if (pessoas[y].nome !== pessoas[i].nome) {
-        pessoas[y].derrotas++;
-      }
-    }
-    exibeJogadoresNaTela(pessoas);
-  }
-  
-  function adicionarEmpate() {
-    for (i = 0; i < pessoas.length; i++) {
-      pessoas[i].empates++;
-      calculaPontos(pessoas[i]);
-    }
-    exibeJogadoresNaTela(pessoas);
-  }
-  
-  function adicionarDerrota(i) {
-    pessoas[i].derrotas++;
-    for (y = 0; y < pessoas.length; y++) {
-      if (pessoas[y].nome !== pessoas[i].nome) {
-        pessoas[y].vitorias++;
-        calculaPontos(pessoas[y]);
-      }
-    }
-    exibeJogadoresNaTela(pessoas);
-  }
-  
+  exibeJogadoresNaTela(jogadores);
+}

@@ -9,19 +9,11 @@
 <body>
   <h1>Tabela de classificação</h1>
 
-  <div>
-    <h3> Adicione um Novo Jogador na Tela </h3>
-    <input placeholder="Insira um Novo Jogador" id="novoJogador"> </input>
-    <input placeholder="URL da imagem desse Jogador" id="imagemJogador"> </input>
-    <button onclick="novoJogador()"> Adicionar </button>
-  </div>
-  <button onclick="zerarPontos()"> Zerar os Pontos </button>
-
   <table style="width:100%">
     <thead>
       <tr>
-        <th>Foto</th>
         <th>Nome</th>
+        <th>Foto</th>
         <th>Vitórias</th>
         <th>Empates</th>
         <th>Derrotas</th>
@@ -30,28 +22,49 @@
       </tr>
     </thead>
     <tbody id="tabelaJogadores">
-      <!--       <tr>
+
+      <!--      <tr>
         <td>Paulo</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>2</td>
+        <td>5</td>
+        <td>1</td>
+        <td>24</td>
         <td><button onClick="adicionarVitoria()">Vitória</button></td>
         <td><button onClick="adicionarEmpate()">Empate</button></td>
         <td><button onClick="adicionarDerrota()">Derrota</button></td>
       </tr>
       <tr>
         <td>Rafa</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>3</td>
+        <td>5</td>
+        <td>6</td>
+        <td>2</td>
         <td><button onClick="adicionarVitoria()">Vitória</button></td>
         <td><button onClick="adicionarEmpate()">Empate</button></td>
         <td><button onClick="adicionarDerrota()">Derrota</button></td>
       </tr>
-    </tbody> -->
+      <tr>
+        <td>Gui</td>
+        <td>3</td>
+        <td>5</td>
+        <td>6</td>
+        <td>2</td>
+        <td><button onClick="adicionarVitoria()">Vitória</button></td>
+        <td><button onClick="adicionarEmpate()">Empate</button></td>
+        <td><button onClick="adicionarDerrota()">Derrota</button></td>
+      </tr>
+    </tbody>
+-->
   </table>
+  <div>
+    <button type="submit" id="resetarJogo" onClick="resetarJogo()">Zerar Placar</button>
+  </div>
+  <div>
+    <input type="text" id="nomeJogador" name="jogador" placeholder="Insira o nome do jogador">
+    <input type="text" id="fotoJogador" name="fotoJogador" placeholder="Insira a url da foto">
+    <button onClick="adicionarJogador()">Adicionar Jogador</button>
+  </div>
 </body>
+
 </html>
 <script src="function.js"></script>
