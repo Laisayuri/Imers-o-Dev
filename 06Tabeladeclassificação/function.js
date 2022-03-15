@@ -1,93 +1,97 @@
-//         chave.  valor.
-var rafa = { nome: "Rafa", foto: "https://cf.shopee.com.br/file/a64e8c6b67fbdf1cbe94ff1aa3643a3e", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
-var paulo = { nome: "Paulo", foto: "https://media-exp1.licdn.com/dms/image/C4D03AQHNUGchMAa-Yw/profile-displayphoto-shrink_200_200/0/1556583729599?e=1648080000&v=beta&t=JlJikK8x2gehkNC55nNOYWjrzsfAtj0e8A2FyZOT4eY", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
-var gui = { nome: "Gui", foto: "https://www.alura.com.br/assets/img/imersoes/instrutores/guilherme_lima.1636535198.jpg", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
-var jogadorNovo = { nome: "", foto: "", vitorias: 0, empates: 0, derrotas: 0, pontos: 0 };
-
-var jogadores = [rafa, paulo, gui];
-
-function adicionarJogador() {
-  var nomeJogador = document.getElementById("nomeJogador").value;
-  document.getElementById("nomeJogador").value = "";
-  var fotoJogador = document.getElementById("fotoJogador").value;
-  document.getElementById("fotoJogador").value = "";
-  
-  jogadorNovo.nome = nomeJogador
-  jogadorNovo.foto = fotoJogador
-  jogadores.push(jogadorNovo)
-  exibeJogadoresNaTela(jogadores)
+const Player = class {
+  constructor(playerName, wins, ties,losses, scores) {
+      this.playerName = playerName
+      this.wins = wins
+      this.ties = ties
+      this.losses = losses
+      this.scores = scores
+  }
 }
 
-function calculaPontos(jogador) {
-  var pontos = jogador.vitorias * 3 + jogador.empates;
-  return pontos;
+const localStoragePlayers = JSON.parse(localStorage.getItem('tabela'))
+let players = localStorage.getItem('tabela') !== null ? localStoragePlayers : []
+
+const updateLocalStorage = () => {
+  localStorage.setItem('tabela', JSON.stringify(players))
 }
 
-rafa.pontos = calculaPontos(rafa);
-paulo.pontos = calculaPontos(paulo);
-gui.pontos = calculaPontos(gui);
+showPlayers()
 
-function exibeJogadoresNaTela(jogadores) {
-  var elemento = "";
-  for (var i = 0; i < jogadores.length; i++) {
-    elemento += "<tr><td>" + jogadores[i].nome + "</td>";
-    elemento += "<td><img src=" + jogadores[i].foto + "></td>";
-    elemento += "<td>" + jogadores[i].vitorias + "</td>";
-    elemento += "<td>" + jogadores[i].empates + "</td>";
-    elemento += "<td>" + jogadores[i].derrotas + "</td>";
-    elemento += "<td>" + jogadores[i].pontos + "</td>";
-    elemento +=
-      "<td><button onClick='adicionarVitoria(" + i + ")'>Vitória</button></td>";
-    elemento +=
-      "<td><button onClick='adicionarEmpate(" + i + ")'>Empate</button></td>";
-    elemento +=
-      "<td><button onClick='adicionarDerrota(" + i + ")'>Derrota</button></td>";
-    elemento += "</tr>";
+function addPlayer() {
+  const newPlayer = document.getElementById('input-player').value
+  const player = new Player(newPlayer, 0, 0, 0, 0)
+  document.getElementById('input-player').value = ''
+  players.push(player)
+  updateLocalStorage()
+  player.scores = calculateScores(player)
+  showPlayers()
+}
+
+function calculateScores(player) {
+  return player.wins * 3 + player.ties
+}
+
+function showPlayers() {
+  const playersTable = document.getElementById('players-table')
+  let element = ''
+
+  for (let i = 0; i < players.length; i++) {
+      element += `
+          <tr>
+              <td>${players[i].playerName}</td>
+              <td>${players[i].wins}</td>
+              <td>${players[i].ties}</td>
+              <td>${players[i].losses}</td>
+              <td>${players[i].scores}</td>
+              <td><button class="btn-actions" onClick="addWin(${i})">Vitória</button></td>
+              <td><button class="btn-actions" onClick="addTie(${i})">Empate</button></td>
+              <td><button class="btn-actions" onClick="addLoss(${i})">Derrota</button></td>
+              <td><button class="btn-actions-delete" onClick="deletePlayer(${i})">X</button></td>
+          </tr>
+      `
   }
 
-  var tabelaJogadores = document.getElementById("tabelaJogadores");
-  tabelaJogadores.innerHTML = elemento;
+  playersTable.innerHTML = element
 }
-exibeJogadoresNaTela(jogadores);
 
-function adicionarVitoria(i) {
-  var jogador = jogadores[i];
-  jogador.vitorias++;
-  jogador.pontos = calculaPontos(jogador);
-  for (var contador = 0; contador < jogadores.length; contador++) {
-    if (contador != i) {
-      var outrosJogadores = jogadores[contador];
-      outrosJogadores.derrotas++;
-    }
+function addWin(i) {
+  const player = players[i]
+  player.wins++
+  players[i].scores = calculateScores(player)
+  updateLocalStorage()
+  showPlayers(players)
+}
+
+function addTie(i) {
+  const player = players[i]
+  player.ties++
+  players[i].scores = calculateScores(player)
+  updateLocalStorage()
+  showPlayers(players)
+}
+
+function addLoss(i) {
+  const player = players[i]
+  player.losses++
+  updateLocalStorage()
+  showPlayers(players)
+}
+
+function resetScore() {
+  if (confirm('Deseja apagar a pontuação da tabela?')) {
+      players.forEach(player => {
+          player.wins = 0
+          player.ties = 0
+          player.losses = 0
+          player.scores = 0
+      })
+      updateLocalStorage()
+      showPlayers()
   }
-  exibeJogadoresNaTela(jogadores);
 }
 
-function adicionarEmpate() {
-  for (
-    var segundoIndice = 0;
-    segundoIndice < jogadores.length;
-    segundoIndice++
-  ) {
-    var jogador = jogadores[segundoIndice];
-    jogador.empates++;
-    jogador.pontos = calculaPontos(jogador);
-  }
-  exibeJogadoresNaTela(jogadores);
-}
-
-function adicionarDerrota(i) {
-  var jogador = jogadores[i];
-  jogador.derrotas++;
-  exibeJogadoresNaTela(jogadores);
-}
-
-function resetarJogo() {
-  for (var i = 0; i < jogadores.length; i++) {
-    jogadores[i].vitorias = 0;
-    jogadores[i].derrotas = 0;
-    jogadores[i].empates = 0;
-    jogadores[i].pontos = 0;
-  }
-  exibeJogadoresNaTela(jogadores);
+function deletePlayer(i) {
+  players.splice(i, 1)
+  updateLocalStorage()
+  showPlayers()
 }
