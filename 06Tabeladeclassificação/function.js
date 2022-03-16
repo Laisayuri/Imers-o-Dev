@@ -43,9 +43,9 @@ function showPlayers() {
               <td>${players[i].ties}</td>
               <td>${players[i].losses}</td>
               <td>${players[i].scores}</td>
-              <td><button class="btn-actions" onClick="addWin(${i})">Vitória</button></td>
-              <td><button class="btn-actions" onClick="addTie(${i})">Empate</button></td>
-              <td><button class="btn-actions" onClick="addLoss(${i})">Derrota</button></td>
+              <td><button class="btn-actionsVitoria" onClick="addWin(${i})">Vitória</button></td>
+              <td><button class="btn-actionsEmpate" onClick="addTie(${i})">Empate</button></td>
+              <td><button class="btn-actionsDerrota" onClick="addLoss(${i})">Derrota</button></td>
               <td><button class="btn-actions-delete" onClick="deletePlayer(${i})">X</button></td>
           </tr>
       `

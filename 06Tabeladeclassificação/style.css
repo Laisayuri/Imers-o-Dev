@@ -66,8 +66,22 @@ button {
   font-size: 0.65rem;
 }
 
-.btn-actions {
-  background: #e7e7e7;
+.btn-actionsVitoria {
+  background: green;
+  color: #000;
+  padding: 0.25rem 0.75rem;
+  margin: 0.25rem 0;
+}
+
+.btn-actionsEmpate {
+  background: yellow;
+  color: #000;
+  padding: 0.25rem 0.75rem;
+  margin: 0.25rem 0;
+}
+
+.btn-actionsDerrota {
+  background: red;
   color: #000;
   padding: 0.25rem 0.75rem;
   margin: 0.25rem 0;
