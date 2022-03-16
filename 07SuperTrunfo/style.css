@@ -18,10 +18,11 @@ body {
   
   .page-logo {
     width: 150px;
-    margin: auto;
-    padding: 10px 10px 60px 10px;
+    margin: end;
+    top: 20px;
+    right: 150px;
   }
-  
+ 
   .name-game {
     z-index: 1;
     max-width: 60%;
@@ -34,8 +35,10 @@ body {
   }
   
   .page-title {
+    font-size: 40px;
     color: #ffffff;
-    margin: 5px 0;
+    margin: 50px 0;
+    padding: 5px 5px 20px 5px;
   }
   
   button {

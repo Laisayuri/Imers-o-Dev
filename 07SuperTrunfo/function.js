@@ -2,10 +2,10 @@ var card1 = {
     nome: "Dr. Octopus",
     img: "https://sm.ign.com/ign_br/screenshot/default/doutor-octopus_5t9r.jpg",
     attributes: {
-      attack: 9,
-      defense: 8,
-      stealth: 2,
-      support: 5
+      ataque: 9,
+      defesa: 8,
+      furtividade: 2,
+      apoiar: 5
     }
   };
   var card2 = {
@@ -13,10 +13,10 @@ var card1 = {
     img:
       "https://uploads.jovemnerd.com.br/wp-content/uploads/2021/12/duende-verde-2-760x314.jpg",
     attributes: {
-      attack: 8,
-      defense: 6,
-      stealth: 6,
-      support: 8
+      ataque: 8,
+      defesa: 6,
+      furtividade: 6,
+      apoiar: 8
     }
   };
   var card3 = {
@@ -24,10 +24,10 @@ var card1 = {
     img:
       "https://uploads.jovemnerd.com.br/wp-content/uploads/2021/12/lagarto-760x428.jpg",
     attributes: {
-      attack: 5,
-      defense: 6,
-      stealth: 5,
-      support: 9
+      ataque: 5,
+      defesa: 6,
+      furtividade: 5,
+      apoiar: 9
     }
   };
   var card4 = {
@@ -35,10 +35,10 @@ var card1 = {
     img:
       "https://uploads.jovemnerd.com.br/wp-content/uploads/2021/12/homem-areia-760x428.jpg",
     attributes: {
-      attack: 8,
-      defense: 5,
-      stealth: 9,
-      support: 2
+      ataque: 8,
+      defesa: 5,
+      furtividade: 9,
+      apoiar: 2
     }
   };
   
