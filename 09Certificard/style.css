@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  background: linear-gradient(
+    72.21deg,
+    #edc8f3 25.26%,
+    rgba(80, 120, 280, 0.95) 85.53%
+  );
+  font-family: "Roboto", sans-serif;
+}
+
+.icons {
+  font-size: 30px;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 90px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-github {
+  background: #fffff;
+  color: black;
+}
+
+.container {
+  background: #ecf4ff;
+  color: #1c1c1c;
+  margin: 64px;
+  border-radius: 20px;
+  box-shadow: 6px 6px 6px #0e1d2f;
+  padding: 64px;
+}
+.container h6 {
+  text-align: right;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+}
+
+.perfil-foto {
+  border-radius: 460px;
+  max-height: 160px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.titulo {
+  margin-left: 16px;
+}
+
+.titulo h1 {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.titulo h3 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.projetos {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    270.08deg,
+    rgba(237, 200, 243, 0.63) 4.77%,
+    rgba(237, 234, 243, 0.4) 100.45%
+  );
+  box-shadow: 2px 2px 4px rgba(16, 16, 16, 0.42);
+  border-radius: 10px;
+  margin-top: 32px;
+  padding: 32px;
+}
+
+.projetos-titulos {
+  text-align: center;
+  list-style: none;
+  font-weight: 700;
+  font-size: 32px;
+  margin-right: 35px;
+}
+
+.projetos-item {
+  list-style-type: none;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 44px;
+  text-align: center;
+}
+
+.projetos-item a {
+  color: #1c1c1c;
+  text-decoration: none;
+}
